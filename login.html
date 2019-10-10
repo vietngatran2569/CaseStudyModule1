@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+    <script src="login.js"></script>
+    <style>
+        body {
+            position: absolute;
+            padding-left: 500px;
+            padding-top: 200px;
+            background-color: burlywood;
+        }
+
+        fieldset {
+            width: 250px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        table {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<fieldset>
+    <legend>Login</legend>
+    <table>
+        <tr>
+            <td><label>User</label></td>
+            <td><input id="inputUser" placeholder="Username" type="text"></td>
+        </tr>
+        <tr>
+            <td><label>Password</label></td>
+            <td><input id="inputPassword" placeholder="Password" type="password"></td>
+        </tr>
+    </table>
+    <br/>
+    <input onclick="login.login()" style="width: 90px; margin-left: 80px;margin-right: 20px;background-color: burlywood;" type="button"
+           value="Login">
+</fieldset>
+
+</body>
