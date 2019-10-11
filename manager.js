@@ -10,10 +10,10 @@ let Product = new function () {
     };
     this.cart=[];
     this.setLocalStorageCart=function () {
-        localStorage.setItem("product",JSON.stringify(this.products))
+        localStorage.setItem("cart",JSON.stringify(this.cart))
     };
     this.getLocalStorageCart=function () {
-        this.products=JSON.parse(localStorage.getItem("products"))
+        this.cart=JSON.parse(localStorage.getItem("cart"))
     };
     this.count = function (data) {
         let el = document.getElementById("count");
@@ -80,26 +80,52 @@ let Product = new function () {
     function closeInput() {
         document.getElementById("spoiler").style.display = 'none';
     }
-
     this.displayUserManager = function () {
         let sout = "";
         if (this.products.length > 0) {
             for (let i = 0; i < this.products.length; i++) {
                 sout += "<tr>";
                 sout += "<td>" + this.products[i] + "</td>";
-                sout += '<td><button onclick="Product.AddCart(' + i + ')">Add Cart</button></td>';
+                sout += '<td><button onclick="Product.addCart(' + i + ')">Add Cart</button></td>';
                 sout += "</tr>";
             }
         }
         document.getElementById("result").innerHTML = sout;
         this.getLocalStorageProduct();
     };
+    this.addCart=function (i) {
+        let confirmAnswer=confirm("Add your Cart?");
+        if (confirmAnswer){
+            this.cart.push(this.products[i]);
+            this.setLocalStorageCart();
+        }else {
+            return;
+        }
+    };
+    this.displayUserCart=function () {
+        let sout1="";
+        for (let i = 0; i <this.cart.length ; i++) {
+            sout1+="<tr>";
+            sout1+='<td>'+this.cart[i]+'</td>';
+            sout1+='</tr>';
+        }
+        document.getElementById("resultUserCart").innerHTML=sout1;
+        this.getLocalStorageCart();
+    }
+
+
 };
 
 Product.showAll();
+Product.displayUserCart();
 
 function logout() {
     return window.location = "login.html";
 }
+function addCart(i) {
+    return Product.addCart(i);
+
+}
+
 
 
