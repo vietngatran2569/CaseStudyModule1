@@ -8,6 +8,13 @@ let Product = new function () {
     this.getLocalStorageProduct = function () {
         this.products = JSON.parse(localStorage.getItem("products"))
     };
+    this.cart=[];
+    this.setLocalStorageCart=function () {
+        localStorage.setItem("product",JSON.stringify(this.products))
+    };
+    this.getLocalStorageCart=function () {
+        this.products=JSON.parse(localStorage.getItem("products"))
+    };
     this.count = function (data) {
         let el = document.getElementById("count");
         let name = 'product';
@@ -21,6 +28,7 @@ let Product = new function () {
         }
     };
     this.showAll = function () {
+        this.getLocalStorageProduct();
         let data = '';
         if (this.products.length > 0) {
             for (let i = 0; i < this.products.length; i++) {
@@ -35,7 +43,6 @@ let Product = new function () {
         }
         this.count(this.products.length);
         this.el.innerHTML = data;
-        this.getLocalStorageProduct();
     };
     this.add = function () {
         let el = document.getElementById('add-name');

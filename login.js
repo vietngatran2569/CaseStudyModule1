@@ -26,3 +26,7 @@ let Username = function () {
     };
 };
 let login = new Username();
+function cancel() {
+    document.getElementById("inputUser").value="";
+    document.getElementById("inputPassword").value="";
+}
